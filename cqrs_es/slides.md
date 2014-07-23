@@ -1,30 +1,42 @@
 # CQRS + ES
 
-!SLIDE
+!SLIDE top
 
 ## Command Query Responsibility Segregation
 ## Event Sourcing
 
-!SLIDE
+### Moda czy konieczność?
 
+!SLIDE left
 
-!SLIDE
+## Co to jest?
+#### CQRS - Command Query Responsibility Segregation
+#### ES - Event Sourcing
 
-# Some sample code
+!SLIDE left
 
-``` ruby
-def method
-  puts "Hello, World"
-end
-```
+## CQRS - terminologia
+* Comand - komenda, polecenia zmieniające stan systemu
+* Query - zapytanie zwracające dane, nie modyfikuje stanu systemu
 
-!SLIDE
+!SLIDE left
+
+## Skądś to znamy
+* Bazy danych: OLTP - OLAP
+* Protokół HTTP: POST - GET
+
+!SLIDE left
+## Czy w "zwykłych" aplikacjach też tak można?
+(TODO: zwykła aplikacja)
+
+!NOTES
+
+## Event Sourcing - terminologia 
 
 # With a Background Image
 
 }}} images/test.png
 
-!NOTES
 
 1) CQRS
 - well known is some domains
@@ -90,3 +102,4 @@ http://msdn.microsoft.com/en-us/library/jj554200.aspx (CQRS Journey)
 http://martinfowler.com/bliki/CQRS.html (Martin Fowler on CQRS)
 http://www.jayway.com/2013/03/08/aggregates-event-sourcing-distilled/ (Minimalistic ES example)
 http://www.slideshare.net/cavalle/the-cqrs-diet (CQRS Diet)
+CAP theorem - wikipedia
