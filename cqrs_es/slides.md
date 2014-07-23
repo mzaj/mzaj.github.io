@@ -84,3 +84,9 @@ end
         - complicated and not 'stable' (many interpretation + naming chaos)
         - performance (rebuilding domain may be time consuming), snapshots help
         - hard to query (CQRS and read database solved this problem)
+
+3) Sources
+http://msdn.microsoft.com/en-us/library/jj554200.aspx (CQRS Journey)
+http://martinfowler.com/bliki/CQRS.html (Martin Fowler on CQRS)
+http://www.jayway.com/2013/03/08/aggregates-event-sourcing-distilled/ (Minimalistic ES example)
+http://www.slideshare.net/cavalle/the-cqrs-diet (CQRS Diet)
