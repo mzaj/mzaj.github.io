@@ -15,9 +15,12 @@
 
 !SLIDE left
 
-## CQRS - terminologia
+## Terminologia
 * Comand - komenda, polecenia zmieniające stan systemu
 * Query - zapytanie zwracające dane, nie modyfikuje stanu systemu
+* Aggregate - grupa obiektów tworzących pewną całość
+* Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu
+* Event - zdarzenie, które zaszło 
 
 !SLIDE left
 
@@ -27,17 +30,112 @@
 
 !SLIDE left
 ## Czy w "zwykłych" aplikacjach też tak można?
-(TODO: zwykła aplikacja)
+!NOTES
+zwykła aplikacja img
+
+!SLIDE
+## Wspólny model
+!NOTES
+zwykład aplikacja w powiększeniu
+!SLIDE left
+
+## Wspólny model
+### zapis 
+* walidacja
+* synchronizacja
+* zwykle operuje na pojedynczym agregacie
+
+### odczyt
+* filtrowanie
+* konwersja, "spłaszczanie" danych 
+* często operuje na wielu aggregatach (listy, raport)
+
+!SLIDE
+!NOTES
+img - cqrs model
+
+!SLIDE left
+## CQRS na poziomie modelu
+* rozdzielnie zadań
+* unknięcie tworzenia pełnego modelu gdy nie jest potrzebny
+* widok konsumuje płaskie DTO (może wymagać konwersji danych)
+
+!SLIDE
+!NOTES
+img - cqrs model + database
+
+!SLIDE left
+## CQRS na poziomie modelu i bazy danych
+* schemat danych i technologia dostosowana do potrzeb
+* skalowalność
+* synchronizacja - AR callbacks, oplog, etc.
+
+!SLIDE left
+## Zalety
+* uproszenie modeli
+* wydajność i skalowalność
+
+## Wady
+* konieczność utrzymywania dwóch modeli
+* duplikacja danych (wiele baz oraz denormalizacja)
+* komplikacja infrastruktury
+* synchronizacja danych i opóźnienia
+
+!SLIDE
+## Eventual consistency
+<img src="images/CAP_diagram.jpg" width="400" />
+"odporność na podział" kosztem spójności danych
+
+!SLIDE left
+## Event Sourcing
+* bardzo często występuje razem z CQRS
+* rozwiązuje inne problemy niż CQRS
+
+!SLIDE left
+## Problem trwałości danych
+* transaction script
+* active record
+* object-relational mapping
+* event sourcing
+
+!SLIDE left
+## Event Sourcing
+* każda akcja domenowa powoduje wygenerowanie eventu (eventów)
+* nie zapisujemy stanu obiektów (ORM) tylko historię zdarzeń (eventy)
+* brak konieczności mapowań między eventach a schematem danych
+* eventy są prostymi DTO
+* nie można modyfikować eventów (tylko dodawać nowe) 
+* eventy mogą być dodatkowo przetwarzane przez domene (i generować kolejne)
+
+!SLIDE
+!NOTES
+image
+
+!SLIDE left
+## Journaling 
+* stosowany w systemach plików i bazach danych
+
+!SLIDE left
+## Event Sourcing + CQRS
+* command database - event store
+* query database - database created from events 
+
+!SLIDE left
+## Zalety
+
+!SLIDE left
+## Wady
+
+!SLIDE left
+## Literatura
+* http://msdn.microsoft.com/en-us/library/jj554200.aspx
+* http://martinfowler.com/bliki/CQRS.html
+* http://www.jayway.com/2013/03/08/aggregates-event-sourcing-distilled/
+* http://www.slideshare.net/cavalle/the-cqrs-diet
+* http://en.wikipedia.org/wiki/CAP_theorem
+* http://martinfowler.com/eaaCatalog/
 
 !NOTES
-
-## Event Sourcing - terminologia 
-
-# With a Background Image
-
-}}} images/test.png
-
-
 1) CQRS
 - well known is some domains
         - data warehouses
@@ -45,7 +143,6 @@
 - classic application (N - tier)
         - same model used for writing and quering
         - complex logic (reading needs differnt logic than writing, e.g. validation vs. filtering, BL vs. PL)
-        - list of invoices example (no need to create full Invoice aggregate root for each invoice on list)
 - CQRS in single application
         - no need to creating full domain model for displaing simple list
         - presentation objects consume simple DTOs (not complicated domain objects), sometimes it is not possible - we must use domain object for e.g. calculations (normalized db)
@@ -70,7 +167,7 @@
         - way of storing domain date in persistent store
         - attacks same problem as ORM, AR, TS, etc. (persistance)
         - similar to ORM - domain logic is fully separated from persistance concerns
-        - contrary to ORM no mapping between domain and store are needed (image)
+        - contrary to ORM no mapping between domain and store are needed
         - events used both for storing and domain objects (ARs) intercommunication (what is AR)
         - well known is some domains (DBs, filesystems)
         - how it cooperates with CQRS
@@ -103,3 +200,4 @@ http://martinfowler.com/bliki/CQRS.html (Martin Fowler on CQRS)
 http://www.jayway.com/2013/03/08/aggregates-event-sourcing-distilled/ (Minimalistic ES example)
 http://www.slideshare.net/cavalle/the-cqrs-diet (CQRS Diet)
 CAP theorem - wikipedia
+http://martinfowler.com/eaaCatalog/ (Catalog of Patterns of Enterprise Application Architecture)

@@ -49,11 +49,14 @@
     <section class='left slide'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h2>CQRS - terminologia</h2>
+        <h2>Terminologia</h2>
         
         <ul>
         <li>Comand - komenda, polecenia zmieniające stan systemu</li>
         <li>Query - zapytanie zwracające dane, nie modyfikuje stanu systemu</li>
+        <li>Aggregate - grupa obiektów tworzących pewną całość</li>
+        <li>Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu</li>
+        <li>Event - zdarzenie, które zaszło</li>
         </ul>
       </div>
       <div class='spacer bottom'></div>
@@ -74,8 +77,211 @@
       <div class='spacer top'></div>
       <div class='content'>
         <h2>Czy w "zwykłych" aplikacjach też tak można?</h2>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Wspólny model</h2>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Wspólny model</h2>
         
-        <p>(TODO: zwykła aplikacja)</p>
+        <h3>zapis</h3>
+        
+        <ul>
+        <li>walidacja</li>
+        <li>synchronizacja</li>
+        <li>zwykle operuje na pojedynczym agregacie</li>
+        </ul>
+        
+        
+        <h3>odczyt</h3>
+        
+        <ul>
+        <li>filtrowanie</li>
+        <li>konwersja, "spłaszczanie" danych</li>
+        <li>często operuje na wielu aggregatach (listy, raport)</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>CQRS na poziomie modelu</h2>
+        
+        <ul>
+        <li>rozdzielnie zadań</li>
+        <li>unknięcie tworzenia pełnego modelu gdy nie jest potrzebny</li>
+        <li>widok konsumuje płaskie DTO (może wymagać konwersji danych)</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>CQRS na poziomie modelu i bazy danych</h2>
+        
+        <ul>
+        <li>schemat danych i technologia dostosowana do potrzeb</li>
+        <li>skalowalność</li>
+        <li>synchronizacja - AR callbacks, oplog, etc.</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Zalety</h2>
+        
+        <ul>
+        <li>uproszenie modeli</li>
+        <li>wydajność i skalowalność</li>
+        </ul>
+        
+        
+        <h2>Wady</h2>
+        
+        <ul>
+        <li>konieczność utrzymywania dwóch modeli</li>
+        <li>duplikacja danych (wiele baz oraz denormalizacja)</li>
+        <li>komplikacja infrastruktury</li>
+        <li>synchronizacja danych i opóźnienia</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Eventual consistency</h2>
+        
+        <p><img src="images/CAP_diagram.jpg" width="400" />
+        "odporność na podział" kosztem spójności danych</p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Event Sourcing</h2>
+        
+        <ul>
+        <li>bardzo często występuje razem z CQRS</li>
+        <li>rozwiązuje inne problemy niż CQRS</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Problem trwałości danych</h2>
+        
+        <ul>
+        <li>transaction script</li>
+        <li>active record</li>
+        <li>object-relational mapping</li>
+        <li>event sourcing</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Event Sourcing</h2>
+        
+        <ul>
+        <li>każda akcja domenowa powoduje wygenerowanie eventu (eventów)</li>
+        <li>nie zapisujemy stanu obiektów (ORM) tylko historię zdarzeń (eventy)</li>
+        <li>brak konieczności mapowań między eventach a schematem danych</li>
+        <li>eventy są prostymi DTO</li>
+        <li>nie można modyfikować eventów (tylko dodawać nowe)</li>
+        <li>eventy mogą być dodatkowo przetwarzane przez domene (i generować kolejne)</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Journaling</h2>
+        
+        <ul>
+        <li>stosowany w systemach plików i bazach danych</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Event Sourcing + CQRS</h2>
+        
+        <ul>
+        <li>command database - event store</li>
+        <li>query database - database created from events</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Zalety</h2>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Wady</h2>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Literatura</h2>
+        
+        <ul>
+        <li>http://msdn.microsoft.com/en-us/library/jj554200.aspx</li>
+        <li>http://martinfowler.com/bliki/CQRS.html</li>
+        <li>http://www.jayway.com/2013/03/08/aggregates-event-sourcing-distilled/</li>
+        <li>http://www.slideshare.net/cavalle/the-cqrs-diet</li>
+        <li>http://en.wikipedia.org/wiki/CAP_theorem</li>
+        <li>http://martinfowler.com/eaaCatalog/</li>
+        </ul>
       </div>
       <div class='spacer bottom'></div>
     </section>
