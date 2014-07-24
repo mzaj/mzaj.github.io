@@ -2,8 +2,8 @@
 <html>
   <head>
     <title>CQRS + ES</title>
-    <meta charset='utf-8'>
-    <meta content='width=1024, user-scalable=no' name='viewport'>
+    <meta charset='utf-8' />
+    <meta content='width=1024, user-scalable=no' name='viewport' />
     <!-- deck.js's core css -->
     <link href="deck.js/core/deck.core.css" rel="stylesheet" type="text/css"/>
     <!-- deck.js extension CSS files -->
@@ -47,20 +47,20 @@
       <div class='spacer bottom'></div>
     </section>
     <section class='left slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h2>Terminologia</h2>
-        
-        <ul>
-        <li>Comand - komenda, polecenie zmieniające stan systemu</li>
-        <li>Query - zapytanie zwracające dane, nie modyfikuje stanu systemu</li>
-        <li>Aggregate - grupa obiektów tworzących całość</li>
-        <li>Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu</li>
-        <li>Event - zdarzenie, które zaszło</li>
-        </ul>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
+  <div class='spacer top'></div>
+  <div class='content'>
+    <h2>Terminologia</h2>
+
+<ul>
+<li>Comand - komenda, polecenie zmieniające stan systemu (<code>IssueInvoiceCommand</code>)</li>
+<li>Query - zapytanie zwracające dane, nie modyfikuje stanu systemu (<code>GetAllInvoicesQuery</code>)</li>
+<li>Aggregate - grupa obiektów tworzących całość (np.: <code>Invoice -* Item</code>)</li>
+<li>Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu (<code>Invoice</code>)</li>
+<li>Event - zdarzenie, które zaszło (<code>InvoiceIssuedEvent</code>)</li>
+</ul>
+  </div>
+  <div class='spacer bottom'></div>
+</section>
     <section class='left slide'>
       <div class='spacer top'></div>
       <div class='content'>
@@ -165,7 +165,7 @@
         <h2>Zalety</h2>
         
         <ul>
-        <li>uproszenie modeli</li>
+        <li>uproszczenie modeli</li>
         <li>wydajność i skalowalność</li>
         </ul>
       </div>
@@ -241,7 +241,7 @@
         <h2>Event Sourcing</h2>
         
         <ul>
-        <li>eventy są prostymi DTO</li>
+        <li>eventy są prostymi VO</li>
         <li>nie można modyfikować eventów (tylko dodawać nowe)</li>
         <li>eventy mogą być dodatkowo przetwarzane przez domenę (i generować kolejne)</li>
         </ul>
@@ -317,19 +317,19 @@
       <div class='spacer bottom'></div>
     </section>
     <section class='left slide'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h2>Wady</h2>
-        
-        <ul>
-        <li>konieczność wersjonowania eventów i potencjalnych migracji</li>
-        <li>skomplikowane, wiele interpretacji, chaos w nazewnictwie</li>
-        <li>brak sprawdzonych narzędzi</li>
-        <li>trudne do wdrożenia w istniejących aplikacjach</li>
-        </ul>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
+  <div class='spacer top'></div>
+  <div class='content'>
+    <h2>Wady</h2>
+
+<ul>
+<li>konieczność wersjonowania eventów i potencjalnych migracji</li>
+<li>skomplikowane, wiele interpretacji, chaos w nazewnictwie</li>
+<li>brak sprawdzonych narzędzi</li>
+<li>trudne do wdrożenia w istniejących aplikacjach</li>
+</ul>
+  </div>
+  <div class='spacer bottom'></div>
+</section>
     <section class='left slide'>
       <div class='spacer top'></div>
       <div class='content'>

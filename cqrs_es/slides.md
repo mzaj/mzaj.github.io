@@ -12,11 +12,11 @@
 
 !SLIDE left
 ## Terminologia
-* Comand - komenda, polecenie zmieniające stan systemu
-* Query - zapytanie zwracające dane, nie modyfikuje stanu systemu
-* Aggregate - grupa obiektów tworzących całość
-* Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu
-* Event - zdarzenie, które zaszło
+* Comand - komenda, polecenie zmieniające stan systemu (`IssueInvoiceCommand`)
+* Query - zapytanie zwracające dane, nie modyfikuje stanu systemu (`GetAllInvoicesQuery`)
+* Aggregate - grupa obiektów tworzących całość (np.: `Invoice -* Item`)
+* Aggregate Root - obiekt stanowiący "punkt wejścia" do agregatu (`Invoice`)
+* Event - zdarzenie, które zaszło (`InvoiceIssuedEvent`)
 
 !SLIDE left
 ## Skądś to znamy
@@ -100,7 +100,7 @@
 
 !SLIDE left
 ## Event Sourcing
-* eventy są prostymi DTO
+* eventy są prostymi VO
 * nie można modyfikować eventów (tylko dodawać nowe)
 * eventy mogą być dodatkowo przetwarzane przez domenę (i generować kolejne)
 
