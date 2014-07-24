@@ -49,7 +49,7 @@
 
 !SLIDE left
 ## CQRS na poziomie modelu
-* rozdzielnie zadań zapisu i odczytu
+* rozdzielenie zadań zapisu i odczytu
 * uniknięcie tworzenia pełnego modelu gdy nie jest potrzebny
 * widok konsumuje płaskie DTO (może wymagać konwersji danych)
 
