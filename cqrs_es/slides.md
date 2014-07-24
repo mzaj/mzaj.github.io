@@ -65,7 +65,7 @@
 
 !SLIDE left
 ## Zalety
-* uproszenie modeli
+* uproszczenie modeli
 * wydajność i skalowalność
 
 !SLIDE left
