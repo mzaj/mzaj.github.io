@@ -25,11 +25,11 @@
 
 !SLIDE
 ## Czy w "zwykłych" aplikacjach też tak można?
-<img src="images/ntier.png" width="700" />
+<img src="images/ntier.png" width="1000" />
 
 !SLIDE
 ## Wspólny model
-<img src="images/cqrs_a1.png" width="1500" />
+<img src="images/cqrs_a1.png" width="1000" />
 
 !SLIDE left
 ## Wspólny model
@@ -45,7 +45,7 @@
 
 !SLIDE
 ## CQRS na poziomie modelu
-<img src="images/cqrs_a2.png" width="1500" />
+<img src="images/cqrs_a2.png" width="1000" />
 
 !SLIDE left
 ## CQRS na poziomie modelu
@@ -55,7 +55,7 @@
 
 !SLIDE
 ## CQRS na poziomie modelu i bazy danych
-<img src="images/cqrs_a3.png" width="1500" />
+<img src="images/cqrs_a3.png" width="1000" />
 
 !SLIDE left
 ## CQRS na poziomie modelu i bazy danych
@@ -102,7 +102,7 @@
 
 !SLIDE
 ## Event Sourcing
-<img src="images/es.jpg" width="1500" />
+<img src="images/es.jpg" width="1000" />
 
 !SLIDE left
 ## Journaling
@@ -125,7 +125,7 @@
 * luźno powiązane aggregaty
 * pełna historia operacji (audit log)
 * możliwość odtworzenia danych na podstawie eventów
-* możliwość odtworzenia stanu danych z dowolnego momentu (reportowanie, analiza błędów)
+* możliwość odtworzenia stanu danych z dowolnego momentu (raportowanie, analiza błędów)
 * eventy można wyłącznie dodawać (prosta implementacja)
 
 !SLIDE left
