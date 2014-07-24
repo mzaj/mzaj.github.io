@@ -27,11 +27,11 @@
     <section class='slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h2>Command Query Responsibility Segregation</h2>
+        <h1>CQRS</h1>
         
-        <h2>Event Sourcing</h2>
+        <h1>ES</h1>
         
-        <h3>Moda czy konieczność?</h3>
+        <h2>Moda czy konieczność?</h2>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -78,7 +78,7 @@
       <div class='content'>
         <h2>Czy w "zwykłych" aplikacjach też tak można?</h2>
         
-        <p><img src="images/ntier.png" width="1000" /></p>
+        <p><img src="images/ntier.png" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -87,7 +87,7 @@
       <div class='content'>
         <h2>Wspólny model</h2>
         
-        <p><img src="images/cqrs_a1.png" width="1000" /></p>
+        <p><img src="images/cqrs_a1.png" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -120,7 +120,7 @@
       <div class='content'>
         <h2>CQRS na poziomie modelu</h2>
         
-        <p><img src="images/cqrs_a2.png" width="1000" /></p>
+        <p><img src="images/cqrs_a2.png" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -142,7 +142,7 @@
       <div class='content'>
         <h2>CQRS na poziomie modelu i bazy danych</h2>
         
-        <p><img src="images/cqrs_a3.png" width="1000" /></p>
+        <p><img src="images/cqrs_a3.png" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -168,8 +168,12 @@
         <li>uproszenie modeli</li>
         <li>wydajność i skalowalność</li>
         </ul>
-        
-        
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
         <h2>Wady</h2>
         
         <ul>
@@ -186,7 +190,7 @@
       <div class='content'>
         <h2>Eventual consistency</h2>
         
-        <p><img src="images/CAP_diagram.jpg" width="400" /></p>
+        <p><img src="images/CAP_diagram.jpg" height='600' /></p>
         
         <h4>"odporność na podział" kosztem spójności danych</h4>
       </div>
@@ -227,6 +231,16 @@
         <li>każda akcja domenowa powoduje wygenerowanie eventu (eventów)</li>
         <li>nie zapisujemy stanu obiektów (ORM) tylko historię zdarzeń (eventy)</li>
         <li>brak konieczności mapowań między strukturą eventów a schematem danych</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Event Sourcing</h2>
+        
+        <ul>
         <li>eventy są prostymi DTO</li>
         <li>nie można modyfikować eventów (tylko dodawać nowe)</li>
         <li>eventy mogą być dodatkowo przetwarzane przez domenę (i generować kolejne)</li>
@@ -239,7 +253,7 @@
       <div class='content'>
         <h2>Event Sourcing</h2>
         
-        <p><img src="images/es.jpg" width="1000" /></p>
+        <p><img src="images/es.jpg" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -271,7 +285,7 @@
       <div class='content'>
         <h2>Event Sourcing - Queries</h2>
         
-        <p><img src="images/es2.jpg" width="1500" /></p>
+        <p><img src="images/es2.jpg" /></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -284,6 +298,16 @@
         <li>brak powiązania obiektów domenowych i schematu danych</li>
         <li>brak konieczności konwersji danych przy zapisie</li>
         <li>luźno powiązane aggregaty</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Zalety</h2>
+        
+        <ul>
         <li>pełna historia operacji (audit log)</li>
         <li>możliwość odtworzenia danych na podstawie eventów</li>
         <li>możliwość odtworzenia stanu danych z dowolnego momentu (raportowanie, analiza błędów)</li>
@@ -302,6 +326,16 @@
         <li>skomplikowane, wiele interpretacji, chaos w nazewnictwie</li>
         <li>brak sprawdzonych narzędzi</li>
         <li>trudne do wdrożenia w istniejących aplikacjach</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h2>Wady</h2>
+        
+        <ul>
         <li>powolne odtwarzanie stanu domeny (rozwiązanie - snapshoty)</li>
         <li>utrudniona analiza stanu danych w oparciu o eventy</li>
         <li>brak możliwości “ręcznych” poprawek danych</li>

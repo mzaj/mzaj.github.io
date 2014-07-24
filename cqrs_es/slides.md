@@ -1,9 +1,9 @@
 # CQRS + ES
 
 !SLIDE top
-## Command Query Responsibility Segregation
-## Event Sourcing
-### Moda czy konieczność?
+# CQRS
+# ES
+## Moda czy konieczność?
 
 !SLIDE left
 ## Co to jest?
@@ -25,11 +25,11 @@
 
 !SLIDE
 ## Czy w "zwykłych" aplikacjach też tak można?
-<img src="images/ntier.png" width="1000" />
+<img src="images/ntier.png" />
 
 !SLIDE
 ## Wspólny model
-<img src="images/cqrs_a1.png" width="1000" />
+<img src="images/cqrs_a1.png" />
 
 !SLIDE left
 ## Wspólny model
@@ -45,7 +45,7 @@
 
 !SLIDE
 ## CQRS na poziomie modelu
-<img src="images/cqrs_a2.png" width="1000" />
+<img src="images/cqrs_a2.png" />
 
 !SLIDE left
 ## CQRS na poziomie modelu
@@ -55,7 +55,7 @@
 
 !SLIDE
 ## CQRS na poziomie modelu i bazy danych
-<img src="images/cqrs_a3.png" width="1000" />
+<img src="images/cqrs_a3.png" />
 
 !SLIDE left
 ## CQRS na poziomie modelu i bazy danych
@@ -68,6 +68,7 @@
 * uproszenie modeli
 * wydajność i skalowalność
 
+!SLIDE left
 ## Wady
 * konieczność utrzymywania dwóch modeli
 * duplikacja danych (wiele baz oraz denormalizacja)
@@ -76,7 +77,7 @@
 
 !SLIDE
 ## Eventual consistency
-<img src="images/CAP_diagram.jpg" width="400" />
+<img src="images/CAP_diagram.jpg" height='600' />
 #### "odporność na podział" kosztem spójności danych
 
 !SLIDE left
@@ -96,13 +97,16 @@
 * każda akcja domenowa powoduje wygenerowanie eventu (eventów)
 * nie zapisujemy stanu obiektów (ORM) tylko historię zdarzeń (eventy)
 * brak konieczności mapowań między strukturą eventów a schematem danych
+
+!SLIDE left
+## Event Sourcing
 * eventy są prostymi DTO
 * nie można modyfikować eventów (tylko dodawać nowe)
 * eventy mogą być dodatkowo przetwarzane przez domenę (i generować kolejne)
 
 !SLIDE
 ## Event Sourcing
-<img src="images/es.jpg" width="1000" />
+<img src="images/es.jpg" />
 
 !SLIDE left
 ## Journaling
@@ -115,7 +119,7 @@
 
 !SLIDE
 ## Event Sourcing - Queries
-<img src="images/es2.jpg" width="1500" />
+<img src="images/es2.jpg" />
 
 
 !SLIDE left
@@ -123,6 +127,9 @@
 * brak powiązania obiektów domenowych i schematu danych
 * brak konieczności konwersji danych przy zapisie
 * luźno powiązane aggregaty
+
+!SLIDE left
+## Zalety
 * pełna historia operacji (audit log)
 * możliwość odtworzenia danych na podstawie eventów
 * możliwość odtworzenia stanu danych z dowolnego momentu (raportowanie, analiza błędów)
@@ -134,6 +141,9 @@
 * skomplikowane, wiele interpretacji, chaos w nazewnictwie
 * brak sprawdzonych narzędzi
 * trudne do wdrożenia w istniejących aplikacjach
+
+!SLIDE left
+## Wady
 * powolne odtwarzanie stanu domeny (rozwiązanie - snapshoty)
 * utrudniona analiza stanu danych w oparciu o eventy
 * brak możliwości “ręcznych” poprawek danych
